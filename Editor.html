@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <link rel='stylesheet prefetch' href='./css/Bootstrap.css'>
-        <link rel='stylesheet prefetch' href='./css/font_aw.css'>
-  
+    <link rel='stylesheet prefetch' href='./css/Bootstrap.css'>
+    <link rel='stylesheet prefetch' href='./css/font_aw.css'>
+
     <title>Editor</title>
 
     <style>
+        @font-face {
+            font-family: myfont;
+            src: url(./font/Estedad.ttf);
+        }
+
+        *{
+            font-family: myfont;
+        }
+
         .ta-editor {
             min-height: 300px;
             height: auto;
@@ -18,39 +28,33 @@
 
 </head>
 
-<body translate="no">
+<body>
 
-        <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app">
-            <h3>Editor</h3>
-            <button ng-click="disabled = !disabled" unselectable>Disable text-angular Toggle</button>
-            <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
-            <h3>Raw HTML in a text area</h3>
-            <textarea ng-model="htmlcontent" style="width: 100%"></textarea>
-            <h3>Bound with ng-bind-html</h3>
-            <div ng-bind-html="htmlcontent"></div>
-            <h3>Bound with ta-bind, our internal html-binding directive</h3>
-            <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
-            <button type="button" ng-click="htmlcontent = orightml">Reset</button>
-            <p>Note: although we support classes and styles, angularjs' ng-bind-html directive will strip out all style
-                attributes.</p>
+    <div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app">
 
-            <h3>Option to masquerade as a fancy text-area - complete with form submission and optional ngModel</h3>
-            <text-angular name="htmlcontent">
-                <p>Any <b>HTML</b> we put in-between the text-angular tags gets automatically put into the editor if
-                    there <strong style="font-size: 12pt;"><u><em>is not</em></u></strong> a ngModel</p>
-            </text-angular>
-        </div>
-        <script src='./js/AngularJS-1 .js'></script>
-        <script src='./js/AngularJS-2.js'></script>
-        <script src='./js/AngularJS-3.js'></script>
-        <script src="./js/font_aw.js"></script>
+        <h3 style="font-family: myfont;  text-align: right;">ادیتور من</h3>
+        <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
 
-   
-   
+        <h3 style="font-family: myfont;  text-align: right;">مشاهده کد اچ تی ام ال</h3>
+        <textarea ng-model="htmlcontent" style="width: 100% ; "></textarea>
+
+        <h3 style="font-family: myfont;  text-align: right;">مشاهده خروجی کد</h3>
+        <div ng-bind-html="htmlcontent"></div>
+
+    </div>
+
+
+    <script src='./js/AngularJS-1 .js'></script>
+    <script src='./js/AngularJS-2.js'></script>
+    <script src='./js/AngularJS-3.js'></script>
+    <script src="./js/font_aw.js"></script>
+
+
+
     <script id="rendered-js">
         angular.module("textAngularTest", ['textAngular']);
         function wysiwygeditor($scope) {
-            $scope.orightml = '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li>Super Easy <b>Theming</b> Options</li><li style="color: green;">Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li class="text-danger">Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE8+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p>';
+            $scope.orightml = '<blockquote><div align="center"><h3><b>سلام من امیرم و دوست دارم با این ادیتور آشنا بشی</b></h3><div>من عاشق برنامه نویسی هستم و پایین لینک سایتم رو براتون به نمایش میزارم<br><br><a href="https://amir-hasanpour.ir/">سایت من<br></a></div></div><div align="center"><b><br></b></div></blockquote>';
             $scope.htmlcontent = $scope.orightml;
             $scope.disabled = false;
         };
